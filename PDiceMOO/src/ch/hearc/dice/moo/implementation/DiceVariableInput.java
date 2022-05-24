@@ -48,7 +48,7 @@ public class DiceVariableInput
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs/outputs
+	// Inputs et Outputs
 	private Intervale intervalNbFace; // [a,b[
 	private int nbExperience;
 	private TypeProcessing typeProcessing;

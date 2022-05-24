@@ -7,5 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/coursJavaTools.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/junit-platform-console-standalone-1.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
