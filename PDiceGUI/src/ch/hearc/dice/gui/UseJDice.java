@@ -1,9 +1,9 @@
-
 package ch.hearc.dice.gui;
 
-public class UseGui
-	{
+import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
 
+public class UseJDice
+	{
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -15,7 +15,7 @@ public class UseGui
 
 	public static void main()
 		{
-		System.out.println("Hello GUI");
+		new JFrameBaseLine(new JDice(), ShopImage.DICE20);
 		}
 
 	/*------------------------------------------------------------------*\
@@ -23,3 +23,4 @@ public class UseGui
 	\*------------------------------------------------------------------*/
 
 	}
+
