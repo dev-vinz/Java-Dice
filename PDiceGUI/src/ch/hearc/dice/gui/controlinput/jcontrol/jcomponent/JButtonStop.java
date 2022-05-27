@@ -1,19 +1,22 @@
 
-package ch.hearc.dice.gui.jinput.jcomponent;
+package ch.hearc.dice.gui.controlinput.jcontrol.jcomponent;
 
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 
-public class JNbExperience extends JPanel
+import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.dice.gui.utils.Settings;
+import ch.hearc.dice.gui.utils.ShopImage;
+
+public class JButtonStop extends JPanel
 	{
-
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JNbExperience()
+	public JButtonStop()
 		{
 		geometry();
 		control();
@@ -34,30 +37,31 @@ public class JNbExperience extends JPanel
 
 	private void geometry()
 		{
-		this.jSlider = new JSlider();
+		this.button = new JButton();
 		this.gridLayout = new GridLayout();
 		setLayout(gridLayout);
-		//add(new JCenter(this.jSlider)); Centre sur les coté aussi
-		add(this.jSlider); //Prends toute la longueur de la fenetre
+		add(this.button);
 		}
+
 
 	private void control()
 		{
-		// TODO Auto-generated method stub
-
+		// rien
 		}
 
 	private void appearance()
 		{
-
+		button.setIcon(ShopImage.STOP);
+		Sizes.setHorizontal(button, Settings.BUTTON_WIDTH);
+		Sizes.setVertical(button, Settings.BUTTON_HEIGHT);
 		}
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	//Tools
-	private JSlider jSlider;
+	// Tools
+	private JButton button;
 	private GridLayout gridLayout;
 	}
 

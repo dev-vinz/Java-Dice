@@ -1,12 +1,16 @@
 
-package ch.hearc.dice.gui.jinput.jcomponent;
+package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+
+import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.dice.gui.utils.Settings;
 
 public class JNbFace extends JPanel
 	{
@@ -62,7 +66,11 @@ public class JNbFace extends JPanel
 
 	private void appearance()
 		{
-
+		setBorder(BorderFactory.createTitledBorder("Number of faces"));
+		Sizes.setHorizontal(jSpinnerMin, Settings.BUTTON_WIDTH/2);
+		Sizes.setHorizontal(jSpinnerMax, Settings.BUTTON_WIDTH/2);
+		Sizes.setVertical(jSpinnerMin, Settings.BUTTON_HEIGHT);
+		Sizes.setVertical(jSpinnerMax, Settings.BUTTON_HEIGHT);
 		}
 
 	/*------------------------------------------------------------------*\

@@ -1,15 +1,16 @@
 
-package ch.hearc.dice.gui.jinput;
+package ch.hearc.dice.gui.controlinput.jinput;
 
-import java.awt.GridLayout;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 
-import javax.swing.JPanel;
+import ch.hearc.c_gui.tools.decorateur.center.JCenterH;
+import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbExperience;
+import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbFace;
+import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JTypeProcess;
+import ch.hearc.dice.gui.utils.Settings;
 
-import ch.hearc.dice.gui.jinput.jcomponent.JNbExperience;
-import ch.hearc.dice.gui.jinput.jcomponent.JNbFace;
-import ch.hearc.dice.gui.jinput.jcomponent.JTypeProcess;
-
-public class JInput extends JPanel
+public class JInput extends Box
 	{
 
 	/*------------------------------------------------------------------*\
@@ -19,6 +20,9 @@ public class JInput extends JPanel
 
 	public JInput()
 		{
+
+		super(BoxLayout.Y_AXIS);
+
 		geometry();
 		control();
 		appearance();
@@ -41,13 +45,17 @@ public class JInput extends JPanel
 		this.jNbFace = new JNbFace();
 		this.jTypeProcess = new JTypeProcess();
 
-		this.gridLayout = new GridLayout();
-		setLayout(gridLayout);
-
-
 		add(jNbExperience);
 		add(jNbFace);
 		add(jTypeProcess);
+
+		add(Box.createVerticalStrut(Settings.MARGE));
+		add(new JCenterH(this.jNbExperience));
+		add(Box.createVerticalStrut(Settings.MARGE));
+		add(new JCenterH(this.jNbFace));
+		add(Box.createVerticalStrut(Settings.MARGE));
+		add(new JCenterH(this.jTypeProcess));
+		add(Box.createVerticalStrut(Settings.MARGE));
 
 		}
 
@@ -71,6 +79,5 @@ public class JInput extends JPanel
 	private JNbExperience jNbExperience;
 	private JNbFace jNbFace;
 	private JTypeProcess jTypeProcess;
-	private GridLayout gridLayout;
 	}
 

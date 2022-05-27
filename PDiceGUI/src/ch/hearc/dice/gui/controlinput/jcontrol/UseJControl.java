@@ -1,10 +1,9 @@
-package ch.hearc.dice.gui;
+
+package ch.hearc.dice.gui.controlinput.jcontrol;
 
 import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
-import ch.hearc.dice.gui.jcomponent.JTab;
-import ch.hearc.dice.gui.utils.ShopImage;
 
-public class UseJDice
+public class UseJControl
 	{
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -17,7 +16,7 @@ public class UseJDice
 
 	public static void main()
 		{
-		new JFrameBaseLine(new JTab(), ShopImage.DICE20);
+		new JFrameBaseLine(new JControl());
 		}
 
 	/*------------------------------------------------------------------*\
@@ -25,4 +24,3 @@ public class UseJDice
 	\*------------------------------------------------------------------*/
 
 	}
-

@@ -1,10 +1,14 @@
 
-package ch.hearc.dice.gui.jinput.jcomponent;
+package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
+
+import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.dice.gui.utils.Settings;
 
 public class JTypeProcess extends Box
 	{
@@ -64,7 +68,10 @@ public class JTypeProcess extends Box
 
 	private void appearance()
 		{
-
+		setBorder(BorderFactory.createTitledBorder("Type Process"));
+		Sizes.setHorizontal(jRadioSequentialButton, Settings.BUTTON_WIDTH);
+		Sizes.setHorizontal(jRadioRunnableButton, Settings.BUTTON_WIDTH);
+		Sizes.setHorizontal(jRadioParallelButton, Settings.BUTTON_WIDTH);
 		}
 
 	/*------------------------------------------------------------------*\
@@ -72,7 +79,6 @@ public class JTypeProcess extends Box
 	\*------------------------------------------------------------------*/
 
 	//Tools
-	private BoxLayout boxLayout;
 	private ButtonGroup radioButtonGroup;
 	private JRadioButton jRadioSequentialButton;
 	private JRadioButton jRadioRunnableButton;

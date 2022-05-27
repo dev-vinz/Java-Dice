@@ -1,9 +1,9 @@
 
-package ch.hearc.dice.gui.jinput;
+package ch.hearc.dice.gui.controlinput.jinput;
 
 import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
 
-public class UseJNbFace
+public class UseJInput
 	{
 
 	/*------------------------------------------------------------------*\

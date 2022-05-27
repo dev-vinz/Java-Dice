@@ -1,4 +1,4 @@
-package ch.hearc.dice.gui;
+package ch.hearc.dice.gui.utils;
 
 import javax.swing.ImageIcon;
 

@@ -1,9 +1,9 @@
 
-package ch.hearc.dice.gui.jcomponent;
+package ch.hearc.dice.gui.controlinput.display.jcomponent;
 
 
 
-public class JTabPane
+public class JChronometre
 	{
 	
 	/*------------------------------------------------------------------*\

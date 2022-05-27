@@ -1,20 +1,23 @@
 
-package ch.hearc.dice.gui;
+package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
-import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
+import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.dice.gui.utils.Settings;
 
-public class JDice extends JPanel
+public class JNbExperience extends JPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JDice()
+	public JNbExperience()
 		{
 		geometry();
 		control();
@@ -32,15 +35,14 @@ public class JDice extends JPanel
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
-	private void appearance()
+
+	private void geometry()
 		{
-		this.logo = new JLabel("");
-		this.logo.setIcon(ShopImage.HEARC);
-
-		this.borderlayout = new BorderLayout();
-		setLayout(this.borderlayout);
-
-		add(this.logo, BorderLayout.SOUTH);
+		this.jSlider = new JSlider();
+		this.gridLayout = new GridLayout();
+		setLayout(gridLayout);
+		//add(new JCenter(this.jSlider)); Centre sur les coté aussi
+		add(this.jSlider); //Prends toute la longueur de la fenetre
 		}
 
 	private void control()
@@ -49,17 +51,18 @@ public class JDice extends JPanel
 
 		}
 
-	private void geometry()
+	private void appearance()
 		{
-		//this.borderlayout.setHgap(50);
-		//this.borderlayout.setVgap(50);
+		setBorder(BorderFactory.createTitledBorder("Number of experiment"));
+		Sizes.setHorizontal(jSlider, Settings.BUTTON_WIDTH);
 		}
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	//tools
-	private BorderLayout borderlayout;
-	private JLabel logo;
+	//Tools
+	private JSlider jSlider;
+	private GridLayout gridLayout;
 	}
 
