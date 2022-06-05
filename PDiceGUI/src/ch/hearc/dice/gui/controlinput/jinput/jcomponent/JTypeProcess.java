@@ -7,7 +7,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
-import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
 
 public class JTypeProcess extends Box

@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
 
 public class JNbExperience extends JPanel

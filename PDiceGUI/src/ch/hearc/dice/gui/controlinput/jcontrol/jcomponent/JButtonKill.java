@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
 import ch.hearc.dice.gui.utils.ShopImage;
 

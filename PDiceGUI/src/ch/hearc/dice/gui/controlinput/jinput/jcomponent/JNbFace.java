@@ -9,7 +9,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
-import ch.hearc.c_gui.tools.decorateur.Sizes;
+import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
 
 public class JNbFace extends JPanel
