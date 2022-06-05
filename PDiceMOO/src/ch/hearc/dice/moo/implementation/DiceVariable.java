@@ -2,7 +2,6 @@
 package ch.hearc.dice.moo.implementation;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import ch.hearc.b_poo.j_thread.c_vecteurs.tools.Intervale;
@@ -110,19 +109,27 @@ public class DiceVariable extends AlgoIteratif_A implements DiceVariable_I
 
 	private int getNbFaceAt(int i)
 		{
-		// TODO : Trouver plus efficace
-		// Get the number of face of the interval
-		Iterator<Integer> iterator = getNbFaces().iterator();
+		// V1
+		//			{
+		//			// TODO : Trouver plus efficace
+		//			// Get the number of face of the interval
+		//			Iterator<Integer> iterator = getNbFaces().iterator();
+		//
+		//			int nbFace = 0;
+		//			int cpt = 0;
+		//
+		//			while(iterator.hasNext() && cpt++ <= i)
+		//				{
+		//				nbFace = iterator.next();
+		//				}
+		//
+		//			return nbFace;
+		//			}
 
-		int nbFace = 0;
-		int cpt = 0;
-
-		while(iterator.hasNext() && cpt++ <= i)
+		// V2
 			{
-			nbFace = iterator.next();
+			return getNbFaces().getA() + i;
 			}
-
-		return nbFace;
 		}
 
 	/*------------------------------------------------------------------*\
