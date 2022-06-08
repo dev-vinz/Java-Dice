@@ -1,12 +1,21 @@
 
-package ch.hearc.dice.gui.controlinput.display.jcomponent;
+package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
-public class JGraph
+import javax.swing.JPanel;
+
+public class JGraphDuration extends JPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
+	public JGraphDuration()
+		{
+		geometry();
+		control();
+		appearance();
+		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -20,8 +29,27 @@ public class JGraph
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	private void geometry()
+		{
+		// TODO
+		}
+
+	private void control()
+		{
+		// rien
+		}
+
+	private void appearance()
+		{
+		// rien
+		}
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-	}
 
+	// Inputs
+
+	// Tools
+
+	}

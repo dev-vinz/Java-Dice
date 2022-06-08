@@ -1,21 +1,19 @@
 
-package ch.hearc.dice.gui.controlinput.display;
+package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import ch.hearc.c_gui.tools.decorateur.center.JCenter;
-import ch.hearc.dice.gui.controlinput.display.jcomponent.JChronometre;
-
-public class JDisplay extends JPanel
+public class JGraphs extends JPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JDisplay()
+	public JGraphs()
 		{
 		geometry();
 		control();
@@ -36,10 +34,11 @@ public class JDisplay extends JPanel
 
 	private void geometry()
 		{
-		this.jChronometre = new JChronometre();
-		setLayout(new BorderLayout());
+		this.gridLayout = new GridLayout(-1, 1);
+		setLayout(this.gridLayout);
 
-		add(new JCenter(this.jChronometre),BorderLayout.NORTH);
+		add(new JGraphLancerMoyen());
+		add(new JGraphDuration());
 		}
 
 	private void control()
@@ -49,7 +48,9 @@ public class JDisplay extends JPanel
 
 	private void appearance()
 		{
-		// rien
+		setBackground(Color.GREEN);
+
+		this.gridLayout.setVgap(10);
 		}
 
 	/*------------------------------------------------------------------*\
@@ -59,6 +60,6 @@ public class JDisplay extends JPanel
 	// Inputs
 
 	// Tools
-	private JChronometre jChronometre;
+	private GridLayout gridLayout;
 
 	}
