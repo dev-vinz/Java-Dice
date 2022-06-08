@@ -1,21 +1,29 @@
 
 package ch.hearc.dice.gui.service;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.sun.tools.javac.util.List;
+import org.junit.jupiter.api.Assertions;
 
-import ch.hearc.dice.moo.implementation.DiceVariable;
 import ch.hearc.dice.moo.implementation.DiceVariableInput;
 import ch.hearc.dice.moo.specification.DiceVariable_I;
+import ch.hearc.dice.moo.specification.FactoryDiceVariable;
+import ch.hearc.tools.algo.EtatAlgo;
+import ch.hearc.tools.algo.IterationEvent;
+import ch.hearc.tools.algo.IterationListener;
 
 public class DiceVariableService
 	{
-	...
 
 	public static synchronized DiceVariableService getInstance()
 		{
-		...
+		if (instance == null)
+			{
+			instance = new DiceVariableService();
+			}
+
+		return instance;
 		}
 
 	public DiceVariable_I getCurentDiceVariable()
@@ -28,11 +36,11 @@ public class DiceVariableService
 	*/
 	public void setInputs(DiceVariableInput diceVariableInput)
 		{
-		this.diceVariableInput= diceVariableInput :
+		this.diceVariableInput = diceVariableInput;
 		}
 
 	/*------------------------------------------------------------------*\
-	|* start/stop/kill *|
+	|* 						start/stop/kill 							*|
 	\*------------------------------------------------------------------*/
 
 	public synchronized DiceVariable_I start() // called by buttonStart
@@ -41,12 +49,30 @@ public class DiceVariableService
 		if (!isStarted.get())
 			{
 			this.curentDiceVariable = FactoryDiceVariable.create(diceVariableInput);
-			// TODO démarer un thread qui execute l’algo (attribut tools)
-			// TODO call avertirDiceVariableListener
-			// TODO metrre un listener sur l’algo pour changer le flag isStarted à la fin de l’algo
+			this.thread = new Thread(this.curentDiceVariable);
+			thread.start();
+
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.CREATED_STARTED);
+			avertirDiceVariableListener(event);
+
+			this.curentDiceVariable.addIterationListener(new IterationListener()
+				{
+
+				@Override
+				public void iterationPerformed(IterationEvent iterationEvent)
+					{
+					if(iterationEvent.getEtatAlgo()==EtatAlgo.END)
+						{
+						isStarted.set(false);
+						}
+					}
+				});
+
 			return this.curentDiceVariable;
 			}
 		// TODO else // message d’erreur
+
+		return curentDiceVariable;
 		}
 
 	public synchronized void stop() // called by buttonStop
@@ -73,7 +99,7 @@ public class DiceVariableService
 		}
 
 	/*------------------------------------------------------------------*\
-	|* listener *|
+	|* 							listener								*|
 	\*------------------------------------------------------------------*/
 	public synchronized void addDiceVariableServiceListener(DiceVariableServiceListener diceVariableServiceListener)
 		{
@@ -85,20 +111,29 @@ public class DiceVariableService
 		this.listDiceVariableServiceListener.remove(diceVariableServiceListener);
 		}
 
-	private synchronized void avertirDiceVariableListener(DiceVariableEvent diceVariableEvent)
+	private synchronized void avertirDiceVariableListener(DiceVariableServiceEvent diceVariableEvent)
 		{
-		// TODO foreach sur listDiceVariableServiceListener
+		for(DiceVariableServiceListener diceVariableServiceListener:listDiceVariableServiceListener)
+			{
+			diceVariableServiceListener.diceVariableServicePerformed(diceVariableEvent);
+			}
 		}
 
 	/*------------------------------------------------------------------*\
-	|* Attributs *|
+	|* 							Attributs 								*|
 	\*------------------------------------------------------------------*/
 	// Tools
-	private DiceVariable_I diceVariableCurrent;
+	private DiceVariable_I curentDiceVariable;
 	private List<DiceVariableServiceListener> listDiceVariableServiceListener;
 	private AtomicBoolean isStarted;
 	private Thread thread;
 	// Inputs
 	private DiceVariableInput diceVariableInput;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static DiceVariableService instance = null;
 
 	}

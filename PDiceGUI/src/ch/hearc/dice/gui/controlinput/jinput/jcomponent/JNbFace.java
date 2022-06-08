@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
@@ -41,15 +43,13 @@ public class JNbFace extends JPanel
 
 	private void geometry()
 		{
-		SpinnerModel modelMax = new SpinnerNumberModel(
-				20, //valeur initiale
-				0, //valeur minimum
+		SpinnerModel modelMax = new SpinnerNumberModel(20, //valeur initiale
+				1, //valeur minimum
 				200, //valeur maximum
 				1 //pas
 		);
 
-		SpinnerModel modelMin = new SpinnerNumberModel(
-				2, //valeur initiale
+		SpinnerModel modelMin = new SpinnerNumberModel(6, //valeur initiale
 				0, //valeur minimum
 				200, //valeur maximum
 				1 //pas
@@ -72,15 +72,43 @@ public class JNbFace extends JPanel
 
 	private void control()
 		{
-		// TODO Auto-generated method stub
+		this.jSpinnerMin.addChangeListener(new ChangeListener()
+			{
+
+			@Override
+			public void stateChanged(ChangeEvent e)
+				{
+
+				if ((int)jSpinnerMin.getValue() >= (int)jSpinnerMax.getValue())
+					{
+					jSpinnerMax.setValue((int)jSpinnerMin.getValue() + 1);
+
+					}
+				}
+			});
+
+		this.jSpinnerMax.addChangeListener(new ChangeListener()
+			{
+
+			@Override
+			public void stateChanged(ChangeEvent e)
+				{
+				if ((int)jSpinnerMax.getValue() <= (int)jSpinnerMin.getValue())
+					{
+					jSpinnerMin.setValue((int)jSpinnerMax.getValue() - 1);
+
+					}
+
+				}
+			});
 
 		}
 
 	private void appearance()
 		{
 		setBorder(BorderFactory.createTitledBorder("Number of faces"));
-		Sizes.setHorizontal(jSpinnerMin, Settings.BUTTON_WIDTH/2);
-		Sizes.setHorizontal(jSpinnerMax, Settings.BUTTON_WIDTH/2);
+		Sizes.setHorizontal(jSpinnerMin, Settings.BUTTON_WIDTH / 2);
+		Sizes.setHorizontal(jSpinnerMax, Settings.BUTTON_WIDTH / 2);
 		Sizes.setVertical(jSpinnerMin, Settings.BUTTON_HEIGHT);
 		Sizes.setVertical(jSpinnerMax, Settings.BUTTON_HEIGHT);
 		}

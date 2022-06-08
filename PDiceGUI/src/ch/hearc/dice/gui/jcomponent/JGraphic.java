@@ -50,7 +50,7 @@ public class JGraphic extends JSplitPane
 
 	private void appearance()
 		{
-		setDividerLocation(200); //plus besoin car une taille min sur JControl
+		setDividerLocation(1000);
 		}
 
 	/*------------------------------------------------------------------*\

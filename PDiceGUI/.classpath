@@ -9,10 +9,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/coursJavaTools.jar"/>
 	<classpathentry kind="lib" path="/PDeploy/Deploy/images.jar"/>
-<<<<<<< HEAD
-	<classpathentry combineaccessrules="false" kind="src" path="/PDiceMOO"/>
-=======
-	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/jfreechart-1.5.0.jar"/>
->>>>>>> f288e39 (Add JGraph components)
+	<classpathentry kind="lib" path="C:/Java/tp-algo-3/PDeploy/Deploy/ext/jfreechart-1.5.0.jar"/>
+	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/junit-platform-console-standalone-1.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

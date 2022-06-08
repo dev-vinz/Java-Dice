@@ -4,8 +4,11 @@ package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import ch.hearc.c_gui.tools.Sizes;
 import ch.hearc.dice.gui.utils.Settings;
@@ -39,22 +42,36 @@ public class JNbExperience extends JPanel
 	private void geometry()
 		{
 		this.jSlider = new JSlider();
-		this.gridLayout = new GridLayout();
+		this.jLabel = new JLabel();
+		this.gridLayout = new GridLayout(2,1);
 		setLayout(gridLayout);
-		//add(new JCenter(this.jSlider)); Centre sur les coté aussi
-		add(this.jSlider); //Prends toute la longueur de la fenetre
+		add(this.jLabel);
+		add(this.jSlider);
+
 		}
 
 	private void control()
 		{
-		// TODO Auto-generated method stub
+		this.jLabel.setText(Integer.toString(jSlider.getValue()));
+		jSlider.addChangeListener(new ChangeListener()
+			{
+			@Override
+			public void stateChanged(ChangeEvent e)
+				{
+				jLabel.setText(Integer.toString(jSlider.getValue()));
+				}
+			});
+
+
 
 		}
+
 
 	private void appearance()
 		{
 		setBorder(BorderFactory.createTitledBorder("Number of experiment"));
 		Sizes.setHorizontal(jSlider, Settings.BUTTON_WIDTH);
+
 		}
 
 	/*------------------------------------------------------------------*\
@@ -63,6 +80,7 @@ public class JNbExperience extends JPanel
 
 	//Tools
 	private JSlider jSlider;
+	private JLabel jLabel;
 	private GridLayout gridLayout;
 	}
 

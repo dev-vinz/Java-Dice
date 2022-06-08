@@ -1,23 +1,26 @@
 
-package ch.hearc.dice.gui.jcomponent;
+package ch.hearc.dice.gui.utils;
 
-import javax.swing.JTabbedPane;
+import java.awt.Dimension;
 
-import ch.hearc.dice.gui.about.JAbout;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
-public class JTab extends JTabbedPane
+import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
+
+public class JFrameDiceBaseLine extends JFrameBaseLine
 	{
+
+	public JFrameDiceBaseLine(JComponent jcomponent, ImageIcon imageIcon, Dimension minDimension, Dimension prefDimension)
+		{
+		super(jcomponent, imageIcon);
+		this.setMinimumSize(minDimension);
+		this.setMinimumSize(prefDimension);
+		}
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
-	public JTab()
-		{
-		geometry();
-		control();
-		appearance();
-		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -31,31 +34,8 @@ public class JTab extends JTabbedPane
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void geometry()
-		{
-		this.jGraphic = new JGraphic();
-		this.jAbout = new JAbout();
-		add("main", jGraphic);
-		add("about", jAbout);
-		}
-
-	private void control()
-		{
-		// TODO Auto-generated method stub
-
-		}
-
-	private void appearance()
-		{
-		// TODO Auto-generated method stub
-
-		}
-
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
-
-	//tools
-	private JAbout jAbout;
-	private JGraphic jGraphic;
 	}
+

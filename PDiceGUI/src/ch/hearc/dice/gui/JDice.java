@@ -1,12 +1,15 @@
 
 package ch.hearc.dice.gui;
 
-//Il faut rentrer la création des panel ( controlInput) ici dedans
+import javax.swing.JTabbedPane;
+
+import ch.hearc.dice.gui.about.JAbout;
+import ch.hearc.dice.gui.jcomponent.JGraphic;
 
 /**
  * singleton
  */
-public class JDice
+public class JDice extends JTabbedPane
 	{
 
 	/*------------------------------------------------------------------*\
@@ -15,7 +18,9 @@ public class JDice
 
 	private JDice()
 		{
-
+		geometry();
+		control();
+		appearance();
 		}
 
 	/*------------------------------*\
@@ -44,13 +49,36 @@ public class JDice
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
+	private void geometry()
+		{
+		this.jGraphic = new JGraphic();
+		this.jAbout = new JAbout();
+		add("main", jGraphic);
+		add("about", jAbout);
+		}
+
+	private void control()
+		{
+		// TODO Auto-generated method stub
+
+		}
+
+	private void appearance()
+		{
+
+
+		}
+
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
 	// Outputs
 
-	// Tools
+	//tools
+		private JAbout jAbout;
+		private JGraphic jGraphic;
 
 	/*------------------------------*\
 	|*			  Static			*|

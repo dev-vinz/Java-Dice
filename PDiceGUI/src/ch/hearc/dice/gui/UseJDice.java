@@ -1,7 +1,8 @@
 package ch.hearc.dice.gui;
 
-import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
-import ch.hearc.dice.gui.jcomponent.JTab;
+import java.awt.Dimension;
+
+import ch.hearc.dice.gui.utils.JFrameDiceBaseLine;
 import ch.hearc.dice.gui.utils.ShopImage;
 
 public class UseJDice
@@ -17,7 +18,7 @@ public class UseJDice
 
 	public static void main()
 		{
-		new JFrameBaseLine(new JTab(), ShopImage.DICE20);
+		new JFrameDiceBaseLine(JDice.getInstance(), ShopImage.DICE20,new Dimension(800,800), new Dimension(1200,800));
 		}
 
 	/*------------------------------------------------------------------*\
