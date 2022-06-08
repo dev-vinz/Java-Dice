@@ -1,25 +1,41 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.Plot;
+import org.jfree.data.category.DefaultCategoryDataset;
 
-public class JGraphLancerMoyen extends JFreeChart
+public class JGraphLancerMoyen extends ChartPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JGraphLancerMoyen(Plot plot)
+	public JGraphLancerMoyen(JFreeChart chart)
 		{
-		super(plot);
-		// TODO Auto-generated constructor stub
+		super(chart);
+
+		// Tools
+			{
+			this.dataset = (DefaultCategoryDataset)chart.getCategoryPlot().getDataset();
+			}
+		}
+
+	public JGraphLancerMoyen()
+		{
+		this(createBarGraph());
 		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void addData(int nbFace, int lancerMoyen)
+		{
+		this.dataset.addValue(lancerMoyen, LANCER_MOYEN, Integer.toString(nbFace));
+		}
 
 	/*------------------------------*\
 	|*				Get				*|
@@ -29,19 +45,9 @@ public class JGraphLancerMoyen extends JFreeChart
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void geometry()
+	private static JFreeChart createBarGraph()
 		{
-		// TODO
-		}
-
-	private void control()
-		{
-		// rien
-		}
-
-	private void appearance()
-		{
-		// rien
+		return ChartFactory.createBarChart("", "Nombre de Faces", "Lancers", new DefaultCategoryDataset());
 		}
 
 	/*------------------------------------------------------------------*\
@@ -51,5 +57,11 @@ public class JGraphLancerMoyen extends JFreeChart
 	// Inputs
 
 	// Tools
+	private DefaultCategoryDataset dataset;
 
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final String LANCER_MOYEN = "Lancers Moyens";
 	}

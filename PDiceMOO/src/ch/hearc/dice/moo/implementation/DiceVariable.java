@@ -109,27 +109,7 @@ public class DiceVariable extends AlgoIteratif_A implements DiceVariable_I
 
 	private int getNbFaceAt(int i)
 		{
-		// V1
-		//			{
-		//			// TODO : Trouver plus efficace
-		//			// Get the number of face of the interval
-		//			Iterator<Integer> iterator = getNbFaces().iterator();
-		//
-		//			int nbFace = 0;
-		//			int cpt = 0;
-		//
-		//			while(iterator.hasNext() && cpt++ <= i)
-		//				{
-		//				nbFace = iterator.next();
-		//				}
-		//
-		//			return nbFace;
-		//			}
-
-		// V2
-			{
-			return getNbFaces().getA() + i;
-			}
+		return getNbFaces().getA() + i;
 		}
 
 	/*------------------------------------------------------------------*\
