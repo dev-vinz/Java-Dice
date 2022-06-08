@@ -1,25 +1,35 @@
 
-package ch.hearc.dice.gui.controlinput.display;
+package ch.hearc.dice.gui;
 
-import java.awt.BorderLayout;
+//Il faut rentrer la création des panel ( controlInput) ici dedans
 
-import javax.swing.JPanel;
-
-import ch.hearc.c_gui.tools.decorateur.center.JCenter;
-import ch.hearc.dice.gui.controlinput.display.jcomponent.JChronometre;
-
-public class JDisplay extends JPanel
+/**
+ * singleton
+ */
+public class JDice
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JDisplay()
+	private JDice()
 		{
-		geometry();
-		control();
-		appearance();
+
+		}
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	public static synchronized JDice getInstance()
+		{
+		if (instance == null)
+			{
+			instance = new JDice();
+			}
+
+		return instance;
 		}
 
 	/*------------------------------------------------------------------*\
@@ -34,31 +44,18 @@ public class JDisplay extends JPanel
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void geometry()
-		{
-		this.jChronometre = new JChronometre();
-		setLayout(new BorderLayout());
-		add(new JCenter(this.jChronometre),BorderLayout.NORTH);
-		}
-
-	private void control()
-		{
-		// rien
-		}
-
-	private void appearance()
-		{
-		// rien
-		}
-
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
+	// Outputs
 
 	// Tools
-	private JChronometre jChronometre;
+
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static JDice instance = null;
 
 	}
-

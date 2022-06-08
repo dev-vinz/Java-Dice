@@ -1,26 +1,15 @@
 
-package ch.hearc.dice.gui.controlinput.display;
+package ch.hearc.dice.gui.service;
 
-import java.awt.BorderLayout;
+import ch.hearc.dice.moo.implementation.DiceVariableInput;
+import ch.hearc.dice.moo.specification.DiceVariable_I;
 
-import javax.swing.JPanel;
-
-import ch.hearc.c_gui.tools.decorateur.center.JCenter;
-import ch.hearc.dice.gui.controlinput.display.jcomponent.JChronometre;
-
-public class JDisplay extends JPanel
+public class DiceVariableServiceEvent
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
-
-	public JDisplay()
-		{
-		geometry();
-		control();
-		appearance();
-		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -34,31 +23,15 @@ public class JDisplay extends JPanel
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void geometry()
-		{
-		this.jChronometre = new JChronometre();
-		setLayout(new BorderLayout());
-		add(new JCenter(this.jChronometre),BorderLayout.NORTH);
-		}
-
-	private void control()
-		{
-		// rien
-		}
-
-	private void appearance()
-		{
-		// rien
-		}
-
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
-
-	// Tools
-	private JChronometre jChronometre;
+	// Inputs/Outputs
+	private DiceVariableService source ; // inutile
+	private DiceVariable_I curentDiceVariable;
+	private DiceVariableInput diceVariableInput ;
+	private LifeCycle lifeCycle ;
 
 	}
 

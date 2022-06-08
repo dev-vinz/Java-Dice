@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ch.hearc.dice.gui.utils.ShopImage;
+
 public class JAbout extends JPanel
 	{
 
@@ -33,14 +35,16 @@ public class JAbout extends JPanel
 
 	private void geometry()
 		{
-		this.jLabelText = new JLabel("Java DICE");
-		this.jLabelImage = new JLabel("HE-ARC");
+
+		this.jLabelText = new JLabel();
+		this.jLabelImage = new JLabel(ShopImage.HEARC);
+
 
 		this.borderLayout = new BorderLayout();
 		setLayout(borderLayout);
 
-		add(jLabelText,BorderLayout.CENTER);
-		add(jLabelImage,BorderLayout.SOUTH);
+		add(this.jLabelText,BorderLayout.CENTER);
+		add(this.jLabelImage,BorderLayout.SOUTH);
 
 		}
 
@@ -51,7 +55,15 @@ public class JAbout extends JPanel
 
 	private void appearance()
 		{
-		// rien
+		this.jLabelImage.setOpaque(true);
+		this.jLabelText.setText(convertToMultiline("Projet présenté pour M. Bilat\ndans le cadre du cour java \nPar Alessio Comi \nPar Vinceant Jeannin"));
+		this.borderLayout.setHgap(50);
+		this.borderLayout.setVgap(50);
+		}
+
+	private String convertToMultiline(String string)
+		{
+		return "<html>" + string.replaceAll("\n", "<br>");
 		}
 
 	/*------------------------------------------------------------------*\
@@ -61,6 +73,7 @@ public class JAbout extends JPanel
 	// Tools
 	private JLabel jLabelText;
 	private JLabel jLabelImage;
+
 	private BorderLayout borderLayout;
 
 	}

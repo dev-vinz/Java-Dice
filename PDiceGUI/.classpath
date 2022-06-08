@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/PDeploy/Deploy/ext/coursJavaTools.jar"/>
 	<classpathentry kind="lib" path="/PDeploy/Deploy/images.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PDiceMOO"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

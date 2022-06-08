@@ -49,13 +49,11 @@ public class JControl extends Box
 		add(jButtonStart);
 		add(jButtonStop);
 
-		add(Box.createVerticalStrut(Settings.MARGE));
 		add(new JCenterH(this.jButtonStart));
 		add(Box.createVerticalStrut(Settings.MARGE));
 		add(new JCenterH(this.jButtonStop));
 		add(Box.createVerticalStrut(Settings.MARGE));
 		add(new JCenterH(this.jButtonKill));
-		add(Box.createVerticalStrut(Settings.MARGE));
 
 		}
 

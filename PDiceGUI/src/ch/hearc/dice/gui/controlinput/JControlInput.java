@@ -46,11 +46,10 @@ public class JControlInput extends Box
 		add(jControl);
 		add(jInput);
 
-		add(Box.createVerticalStrut(Settings.MARGE));
+		add(Box.createVerticalStrut(Settings.MARGE*2));
 		add(new JCenterH(this.jInput));
-		add(Box.createVerticalStrut(Settings.MARGE));
 		add(new JCenterH(this.jControl));
-		add(Box.createVerticalStrut(Settings.MARGE));
+		add(Box.createVerticalStrut(Settings.MARGE*2));
 		}
 
 	private void control()

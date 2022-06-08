@@ -4,6 +4,7 @@ package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
@@ -40,7 +41,14 @@ public class JNbFace extends JPanel
 
 	private void geometry()
 		{
-		SpinnerModel model = new SpinnerNumberModel(
+		SpinnerModel modelMax = new SpinnerNumberModel(
+				20, //valeur initiale
+				0, //valeur minimum
+				200, //valeur maximum
+				1 //pas
+		);
+
+		SpinnerModel modelMin = new SpinnerNumberModel(
 				2, //valeur initiale
 				0, //valeur minimum
 				200, //valeur maximum
@@ -48,12 +56,16 @@ public class JNbFace extends JPanel
 		);
 
 		//il faudra créer un moyen de mettre le minimum du jSpinnerMax à la valeur du jSpinnerMin
-		this.jSpinnerMax = new JSpinner(model);
-		this.jSpinnerMin = new JSpinner();
+		this.jLabelMax = new JLabel("Max :");
+		this.jLabelMin = new JLabel("Min :");
+		this.jSpinnerMax = new JSpinner(modelMax);
+		this.jSpinnerMin = new JSpinner(modelMin);
 
-		this.gridLayout = new GridLayout(1, 2);
+		this.gridLayout = new GridLayout(2, 2);
 		setLayout(this.gridLayout);
 
+		add(this.jLabelMin);
+		add(this.jLabelMax);
 		add(this.jSpinnerMin);
 		add(this.jSpinnerMax);
 		}
@@ -80,5 +92,7 @@ public class JNbFace extends JPanel
 	//Tools
 	private JSpinner jSpinnerMin;
 	private JSpinner jSpinnerMax;
+	private JLabel jLabelMin;
+	private JLabel jLabelMax;
 	private GridLayout gridLayout;
 	}

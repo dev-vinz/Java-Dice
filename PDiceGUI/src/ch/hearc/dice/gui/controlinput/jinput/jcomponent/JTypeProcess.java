@@ -49,15 +49,13 @@ public class JTypeProcess extends Box
 		radioButtonGroup.add(jRadioRunnableButton);
 		radioButtonGroup.add(jRadioParallelButton);
 
-		final int DY = 15;
-
-		add(Box.createVerticalStrut(DY));
+		add(Box.createVerticalStrut(Settings.MARGE));
 		add(this.jRadioSequentialButton);
-		add(Box.createVerticalGlue());
+		add(Box.createVerticalStrut(Settings.MARGE));
 		add(this.jRadioRunnableButton);
-		add(Box.createVerticalGlue());
+		add(Box.createVerticalStrut(Settings.MARGE));
 		add(this.jRadioParallelButton);
-		add(Box.createVerticalStrut(DY));
+
 		}
 
 	private void control()

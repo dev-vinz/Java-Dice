@@ -8,7 +8,6 @@ import ch.hearc.c_gui.tools.decorateur.center.JCenterH;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbExperience;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbFace;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JTypeProcess;
-import ch.hearc.dice.gui.utils.Settings;
 
 public class JInput extends Box
 	{
@@ -49,14 +48,12 @@ public class JInput extends Box
 		add(jNbFace);
 		add(jTypeProcess);
 
-		add(Box.createVerticalStrut(Settings.MARGE));
 		add(new JCenterH(this.jNbExperience));
-		add(Box.createVerticalStrut(Settings.MARGE));
+		add(Box.createVerticalGlue());
 		add(new JCenterH(this.jNbFace));
-		add(Box.createVerticalStrut(Settings.MARGE));
+		add(Box.createVerticalGlue());
 		add(new JCenterH(this.jTypeProcess));
-		add(Box.createVerticalStrut(Settings.MARGE));
-
+		add(Box.createVerticalGlue());
 		}
 
 	private void control()
