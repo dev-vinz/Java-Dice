@@ -8,6 +8,7 @@ import ch.hearc.c_gui.tools.decorateur.center.JCenterH;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbExperience;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbFace;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JTypeProcess;
+import ch.hearc.dice.moo.implementation.DiceVariableInput;
 
 public class JInput extends Box
 	{
@@ -26,6 +27,7 @@ public class JInput extends Box
 		control();
 		appearance();
 		}
+
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -76,5 +78,6 @@ public class JInput extends Box
 	private JNbExperience jNbExperience;
 	private JNbFace jNbFace;
 	private JTypeProcess jTypeProcess;
+	private DiceVariableInput diceVariableInput;
 	}
 

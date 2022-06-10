@@ -1,7 +1,7 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jprogressbar;
 
-import org.graalvm.compiler.debug.Assertions;
+import org.junit.jupiter.api.Assertions;
 
 import ch.hearc.dice.gui.service.DiceVariableService;
 import ch.hearc.dice.gui.service.DiceVariableServiceEvent;

@@ -6,7 +6,7 @@ package ch.hearc.dice.gui.service;
 public enum LifeCycle
 	{
 	CREATED_STARTED, //
-	STOPED, //
+	STOPPED, //
 	KILLED, //
 	NATURAL_END
 	}

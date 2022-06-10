@@ -79,8 +79,9 @@ public class DiceVariableService
 		{
 		if (isStarted.get())
 			{
-			// TODO arreter l’ago proprement avec la méthode stop de AlgoIteratif_A
-			// TODO call avertirDiceVariableListener
+			this.curentDiceVariable.stop();
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.STOPPED);
+			avertirDiceVariableListener(event);
 			this.isStarted.set(false);
 			}
 		// TODO else // message d’erreur
@@ -90,9 +91,10 @@ public class DiceVariableService
 		{
 		if (isStarted.get())
 			{
-			// TODO, arreter brutalement et immediatement l’algo,
-			// en stopant le thread
-			// TODO call avertirDiceVariableListener
+			this.thread.stop();
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.KILLED);
+			avertirDiceVariableListener(event);
+
 			this.isStarted.set(false);
 			}
 		// TODO else // message d’erreur

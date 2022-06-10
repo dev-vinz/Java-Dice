@@ -62,9 +62,9 @@ public class JNbExperience extends JPanel
 				}
 			});
 
-
-
 		}
+
+
 
 
 	private void appearance()
