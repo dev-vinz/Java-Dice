@@ -1,25 +1,43 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
-import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 
-public class JGraphDuration extends JPanel
+import ch.hearc.tools.Chrono;
+
+public class JGraphDuration extends ChartPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
+	public JGraphDuration(JFreeChart chart)
+		{
+		super(chart);
+
+		// Tools
+			{
+			this.dataset = (DefaultCategoryDataset)chart.getCategoryPlot().getDataset();
+			}
+		}
+
 	public JGraphDuration()
 		{
-		geometry();
-		control();
-		appearance();
+		this(createBarGraph());
 		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
+
+	public void addData(int nbFace, Chrono chrono)
+		{
+		this.dataset.addValue(chrono.getTimeMS(), CHRONO, Integer.toString(nbFace));
+		}
 
 	/*------------------------------*\
 	|*				Get				*|
@@ -29,19 +47,9 @@ public class JGraphDuration extends JPanel
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
-	private void geometry()
+	private static JFreeChart createBarGraph()
 		{
-		// TODO
-		}
-
-	private void control()
-		{
-		// rien
-		}
-
-	private void appearance()
-		{
-		// rien
+		return ChartFactory.createBarChart("", "Nombre de Faces", "Temps", new DefaultCategoryDataset());
 		}
 
 	/*------------------------------------------------------------------*\
@@ -51,5 +59,11 @@ public class JGraphDuration extends JPanel
 	// Inputs
 
 	// Tools
+	private DefaultCategoryDataset dataset;
 
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final String CHRONO = "Temps (ms)";
 	}

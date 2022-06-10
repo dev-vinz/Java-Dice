@@ -58,9 +58,9 @@ public class JProgressBarFace extends JProgressBar
 
 	private void lancerProgressBar()
 		{
-		Assertions.assertTrue((this.iterationListener==null && diceVariable==null) || (this.iterationListener!=null && diceVariable!=null));
+		Assertions.assertTrue((this.iterationListener == null && diceVariable == null) || (this.iterationListener != null && diceVariable != null));
 		// On eneleve les anciens listener sur l’ancien diceVariable
-		if(iterationListener!=null)
+		if (iterationListener != null)
 			{
 			diceVariable.removeIterationListener(iterationListener);
 			}
@@ -68,14 +68,14 @@ public class JProgressBarFace extends JProgressBar
 		// TODO
 		// on s’abonne au nouveau DiceVariable
 		this.iterationListener = createIterationListener();
-		this.diceVariable=DiceVariableService.getInstance()
-		.getCurentDiceVariable();
+		this.diceVariable = DiceVariableService.getInstance().getCurentDiceVariable();
 		this.diceVariable.addIterationListener(iterationListener);
 		}
-		/*------------------------------------------------------------------*\
-		|* 						Attributs Private			 				*|
-		\*------------------------------------------------------------------*/
-		// Tools
-		private IterationListener iterationListener;
-		private DiceVariable_I diceVariable ;
-		}
+
+	/*------------------------------------------------------------------*\
+	|* 						Attributs Private			 				*|
+	\*------------------------------------------------------------------*/
+	// Tools
+	private IterationListener iterationListener;
+	private DiceVariable_I diceVariable;
+	}
