@@ -3,13 +3,13 @@ package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
 import ch.hearc.dice.moo.specification.DiceVariable_I;
 import ch.hearc.tools.Chrono;
+import ch.hearc.tools.Utils;
 import ch.hearc.tools.algo.EtatAlgo;
 import ch.hearc.tools.algo.IterationEvent;
 import ch.hearc.tools.algo.IterationListener;
@@ -71,29 +71,14 @@ public class JGraphs extends JPanel
 				{
 				if (iterationEvent.getEtatAlgo() == EtatAlgo.RUNNING)
 					{
-					int nbFace = diceVariable.getNbFaces().getA() + iterationEvent.getIndice();
+					Map<Integer, Integer> lancers = diceVariable.getMapFaceLancer();
+					Map<Integer, Chrono> chronos = diceVariable.getMapFaceChrono();
 
-					Collection<Integer> lancers = diceVariable.getMapFaceLancer().values();
-					Iterator<Integer> itLancer = lancers.iterator();
+					java.util.Map.Entry<Integer, Integer> lastLancer = Utils.getLastEntry(lancers);
+					java.util.Map.Entry<Integer, Chrono> lastChrono = Utils.getLastEntry(chronos);
 
-					Collection<Chrono> chronos = diceVariable.getMapFaceChrono().values();
-					Iterator<Chrono> itChrono = chronos.iterator();
-
-					int nbLancer = 0;
-					Chrono chrono = null;
-
-					while(itLancer.hasNext())
-						{
-						nbLancer = itLancer.next();
-						}
-
-					while(itChrono.hasNext())
-						{
-						chrono = itChrono.next();
-						}
-
-					graphLancerMoyen.addData(nbFace, nbLancer);
-					graphDuration.addData(nbFace, chrono);
+					graphLancerMoyen.addData(lastLancer.getKey(), lastLancer.getValue());
+					graphDuration.addData(lastChrono.getKey(), lastChrono.getValue());
 					}
 				}
 			});
