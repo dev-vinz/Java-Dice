@@ -115,10 +115,10 @@ public class JNbFace extends JPanel
 		{
 		setBorder(BorderFactory.createTitledBorder("Number of faces"));
 
-		Sizes.setHorizontal(jSpinnerMin, Settings.BUTTON_WIDTH / 2);
-		Sizes.setHorizontal(jSpinnerMax, Settings.BUTTON_WIDTH / 2);
-		Sizes.setVertical(jSpinnerMin, Settings.BUTTON_HEIGHT);
-		Sizes.setVertical(jSpinnerMax, Settings.BUTTON_HEIGHT);
+		Sizes.setHorizontal(jSpinnerMin, Settings.WIDTH / 2);
+		Sizes.setHorizontal(jSpinnerMax, Settings.WIDTH / 2);
+		Sizes.setVertical(jSpinnerMin, Settings.HEIGHT);
+		Sizes.setVertical(jSpinnerMax, Settings.HEIGHT);
 		}
 
 	private void updateNbFaceIntervale()

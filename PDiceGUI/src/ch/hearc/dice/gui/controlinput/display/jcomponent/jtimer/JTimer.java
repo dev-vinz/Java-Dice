@@ -95,7 +95,7 @@ public class JTimer extends JPanel
 		box.add(this.jTimerHorloge);
 		box.add(this.jTimerDigit);
 
-		add(new JMarge(box, Settings.MARGE), BorderLayout.CENTER);
+		add(new JMarge(box, Settings.MARGE,Settings.MARGE), BorderLayout.CENTER);
 		}
 
 	private void control()

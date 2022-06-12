@@ -1,9 +1,11 @@
 package ch.hearc.dice.gui.about;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import ch.hearc.dice.gui.utils.ShopImage;
 
@@ -56,9 +58,9 @@ public class JAbout extends JPanel
 	private void appearance()
 		{
 		this.jLabelImage.setOpaque(true);
-		this.jLabelText.setText(convertToMultiline("Projet présenté pour M. Bilat\ndans le cadre du cour java \nPar Alessio Comi \nPar Vinceant Jeannin"));
-		this.borderLayout.setHgap(50);
-		this.borderLayout.setVgap(50);
+		this.jLabelText.setText(convertToMultiline("Projet présenté pour M. Bilat\nCour java2 \nPar Alessio Comi \nPar Vinceant Jeannin"));
+		this.jLabelText.setFont(TEXT_FONT);
+		this.jLabelText.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 
 	private String convertToMultiline(String string)
@@ -76,4 +78,9 @@ public class JAbout extends JPanel
 
 	private BorderLayout borderLayout;
 
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private static final Font TEXT_FONT = new Font("Tahoma", Font.BOLD, 21);
 	}

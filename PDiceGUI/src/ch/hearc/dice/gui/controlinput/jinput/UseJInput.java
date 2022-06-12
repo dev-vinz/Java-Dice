@@ -1,7 +1,11 @@
 
 package ch.hearc.dice.gui.controlinput.jinput;
 
-import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
+import java.awt.Dimension;
+
+import ch.hearc.dice.gui.service.DiceVariableService;
+import ch.hearc.dice.gui.utils.JFrameDiceBaseLine;
+import ch.hearc.dice.gui.utils.ShopImage;
 
 public class UseJInput
 	{
@@ -17,7 +21,8 @@ public class UseJInput
 
 	public static void main()
 		{
-		new JFrameBaseLine(new JInput());
+		new JFrameDiceBaseLine(new JInput(),ShopImage.DICE20, new Dimension(200,200), new Dimension(200,200));
+		DiceVariableService.getInstance().start();
 		}
 
 	/*------------------------------------------------------------------*\

@@ -74,7 +74,7 @@ public class JNbExperience extends JPanel
 	private void appearance()
 		{
 		setBorder(BorderFactory.createTitledBorder("Number of experiment"));
-		Sizes.setHorizontal(jSlider, Settings.BUTTON_WIDTH);
+		Sizes.setHorizontal(jSlider, Settings.WIDTH);
 		}
 
 	private void onChanged(int nbExperience)

@@ -1,7 +1,6 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Map;
 
@@ -79,9 +78,7 @@ public class JGraphs extends JPanel
 
 	private void appearance()
 		{
-		setBackground(Color.GREEN);
-
-		this.gridLayout.setVgap(10);
+		//rien
 		}
 
 	private void lancerGraphs()

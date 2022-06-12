@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 
 import ch.hearc.b_poo.j_thread.c_vecteurs.tools.Intervale;
 import ch.hearc.c_gui.tools.decorateur.center.JCenterH;
+import ch.hearc.dice.gui.controlinput.display.jcomponent.jtimer.JTimer;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbExperience;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JNbFace;
 import ch.hearc.dice.gui.controlinput.jinput.jcomponent.JTypeProcess;
@@ -26,6 +27,7 @@ public class JInput extends Box
 
 		// Tools
 			{
+			this.jTimer = new JTimer();
 			this.jNbExperience = new JNbExperience(this);
 			this.jNbFace = new JNbFace(this);
 			this.jTypeProcess = new JTypeProcess(this);
@@ -70,16 +72,20 @@ public class JInput extends Box
 
 	private void geometry()
 		{
+		add(jTimer);
 		add(jNbExperience);
 		add(jNbFace);
 		add(jTypeProcess);
 
+		int dy = 35;
+		add(new JCenterH(this.jTimer));
+		add(Box.createVerticalStrut(dy));
 		add(new JCenterH(this.jNbExperience));
-		add(Box.createVerticalGlue());
+		add(Box.createVerticalStrut(dy));
 		add(new JCenterH(this.jNbFace));
-		add(Box.createVerticalGlue());
+		add(Box.createVerticalStrut(dy));
 		add(new JCenterH(this.jTypeProcess));
-		add(Box.createVerticalGlue());
+		add(Box.createVerticalStrut(dy));
 		}
 
 	private void control()
@@ -89,7 +95,7 @@ public class JInput extends Box
 
 	private void appearance()
 		{
-		// Rien
+		//rien
 		}
 
 	/*------------------------------------------------------------------*\
@@ -97,6 +103,7 @@ public class JInput extends Box
 	\*------------------------------------------------------------------*/
 
 	// Tools
+	private JTimer jTimer;
 	private JNbExperience jNbExperience;
 	private JNbFace jNbFace;
 	private JTypeProcess jTypeProcess;

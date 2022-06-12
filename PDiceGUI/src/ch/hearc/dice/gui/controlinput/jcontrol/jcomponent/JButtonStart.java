@@ -23,8 +23,6 @@ public class JButtonStart extends JPanel
 		appearance();
 		}
 
-
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -66,4 +64,5 @@ public class JButtonStart extends JPanel
 	private JButton button;
 	private GridLayout gridLayout;
 	}
+
 

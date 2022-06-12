@@ -1,16 +1,15 @@
 
 package ch.hearc.dice.gui.controlinput.display;
 
-import java.awt.BorderLayout;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 
-import javax.swing.JPanel;
-
-import ch.hearc.c_gui.tools.decorateur.center.JCenter;
+import ch.hearc.c_gui.tools.decorateur.center.JCenterH;
 import ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph.JGraphs;
 import ch.hearc.dice.gui.controlinput.display.jcomponent.jprogressbar.JProgressBars;
-import ch.hearc.dice.gui.controlinput.display.jcomponent.jtimer.JTimer;
+import ch.hearc.dice.gui.utils.Settings;
 
-public class JDisplay extends JPanel
+public class JDisplay extends Box
 	{
 
 	/*------------------------------------------------------------------*\
@@ -19,9 +18,11 @@ public class JDisplay extends JPanel
 
 	public JDisplay()
 		{
+		super(BoxLayout.Y_AXIS);
+
 		// Tools
 			{
-			this.jTimer = new JTimer();
+			//this.jTimer = new JTimer();
 			this.jProgressBars = new JProgressBars();
 			this.jGraphs = new JGraphs();
 			}
@@ -45,11 +46,11 @@ public class JDisplay extends JPanel
 
 	private void geometry()
 		{
-		setLayout(new BorderLayout());
-
-		add(new JCenter(this.jTimer), BorderLayout.NORTH);
-		add(new JCenter(this.jGraphs), BorderLayout.CENTER);
-		add(new JCenter(this.jProgressBars), BorderLayout.SOUTH);
+		add(Box.createVerticalStrut(Settings.MARGE));
+		//add(new JCenterH(this.jTimer));
+		add(new JCenterH(this.jGraphs));
+		add(new JCenterH(this.jProgressBars));
+		add(Box.createVerticalStrut(Settings.MARGE));
 		}
 
 	private void control()
@@ -69,7 +70,7 @@ public class JDisplay extends JPanel
 	// Inputs
 
 	// Tools
-	private JTimer jTimer;
+	//private JTimer jTimer;
 	private JProgressBars jProgressBars;
 	private JGraphs jGraphs;
 

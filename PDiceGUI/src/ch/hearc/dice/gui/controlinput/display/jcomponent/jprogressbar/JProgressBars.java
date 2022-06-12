@@ -1,7 +1,6 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jprogressbar;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -54,8 +53,6 @@ public class JProgressBars extends JPanel
 
 	private void appearance()
 		{
-		// rien
-		this.setBackground(Color.YELLOW);
 		this.gridLayout.setVgap(10);
 		}
 

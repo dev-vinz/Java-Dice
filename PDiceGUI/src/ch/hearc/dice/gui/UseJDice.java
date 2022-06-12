@@ -18,7 +18,7 @@ public class UseJDice
 
 	public static void main()
 		{
-		new JFrameDiceBaseLine(JDice.getInstance(), ShopImage.DICE20,new Dimension(800,800), new Dimension(1200,800));
+		new JFrameDiceBaseLine(JDice.getInstance(), ShopImage.DICE20, new Dimension(800,800), new Dimension(1200,800));
 		}
 
 	/*------------------------------------------------------------------*\

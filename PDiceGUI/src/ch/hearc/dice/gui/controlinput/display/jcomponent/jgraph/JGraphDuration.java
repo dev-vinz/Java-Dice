@@ -49,7 +49,7 @@ public class JGraphDuration extends ChartPanel
 
 	private static JFreeChart createBarGraph()
 		{
-		return ChartFactory.createBarChart("", "Nombre de Faces", "Temps", new DefaultCategoryDataset());
+		return ChartFactory.createBarChart("", "Nombre de Faces", "Temps [ms]", new DefaultCategoryDataset());
 		}
 
 	/*------------------------------------------------------------------*\

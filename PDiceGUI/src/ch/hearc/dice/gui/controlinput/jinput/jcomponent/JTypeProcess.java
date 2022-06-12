@@ -79,9 +79,9 @@ public class JTypeProcess extends Box
 	private void appearance()
 		{
 		setBorder(BorderFactory.createTitledBorder("Type Process"));
-		Sizes.setHorizontal(jRadioSequentialButton, Settings.BUTTON_WIDTH);
-		Sizes.setHorizontal(jRadioRunnableButton, Settings.BUTTON_WIDTH);
-		Sizes.setHorizontal(jRadioParallelButton, Settings.BUTTON_WIDTH);
+		Sizes.setHorizontal(jRadioSequentialButton, Settings.WIDTH);
+		Sizes.setHorizontal(jRadioRunnableButton, Settings.WIDTH);
+		Sizes.setHorizontal(jRadioParallelButton, Settings.WIDTH);
 		}
 
 	/*------------------------------*\
