@@ -66,9 +66,7 @@ public class JDice extends JTabbedPane
 	private void appearance()
 		{
 
-
 		}
-
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -77,8 +75,8 @@ public class JDice extends JTabbedPane
 	// Outputs
 
 	//tools
-		private JAbout jAbout;
-		private JGraphic jGraphic;
+	private JAbout jAbout;
+	private JGraphic jGraphic;
 
 	/*------------------------------*\
 	|*			  Static			*|

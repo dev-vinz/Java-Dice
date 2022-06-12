@@ -58,7 +58,7 @@ public class JAbout extends JPanel
 	private void appearance()
 		{
 		this.jLabelImage.setOpaque(true);
-		this.jLabelText.setText(convertToMultiline("Projet présenté pour M. Bilat\nCour java2 \nPar Alessio Comi \nPar Vinceant Jeannin"));
+		this.jLabelText.setText(convertToMultiline("Projet présenté pour M. Bilat\nCour java2 \nPar Alessio Comi \nPar Vincent Jeannin"));
 		this.jLabelText.setFont(TEXT_FONT);
 		this.jLabelText.setHorizontalAlignment(SwingConstants.CENTER);
 		}

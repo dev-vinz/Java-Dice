@@ -75,7 +75,9 @@ public class DiceVariableService
 			{
 			this.currentDiceVariable = FactoryDiceVariable.create(diceVariableInput);
 			this.thread = new Thread(this.currentDiceVariable);
+
 			thread.start();
+			this.isStarted.set(true);
 
 			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.CREATED_STARTED);
 			avertirDiceVariableListener(event);
@@ -89,6 +91,9 @@ public class DiceVariableService
 					if (iterationEvent.getEtatAlgo() == EtatAlgo.END)
 						{
 						isStarted.set(false);
+
+						DiceVariableServiceEvent endEvent = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.NATURAL_END);
+						avertirDiceVariableListener(endEvent);
 						}
 					}
 				});
@@ -107,16 +112,16 @@ public class DiceVariableService
 		{
 		if (isStarted.get())
 			{
+			this.isStarted.set(false);
+
 			this.currentDiceVariable.stop();
 
 			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.STOPPED);
 			avertirDiceVariableListener(event);
-
-			this.isStarted.set(false);
 			}
 		else
 			{
-			System.out.println("[ERORR] DiceVariableService : Dice already stopped");
+			System.out.println("[ERROR] DiceVariableService : Dice already stopped");
 			}
 		}
 

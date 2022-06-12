@@ -9,6 +9,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
 import ch.hearc.dice.gui.service.DiceVariableService;
+import ch.hearc.dice.gui.service.DiceVariableServiceEvent;
+import ch.hearc.dice.gui.service.DiceVariableServiceListener;
+import ch.hearc.dice.gui.service.LifeCycle;
 import ch.hearc.dice.gui.utils.Settings;
 import ch.hearc.dice.gui.utils.ShopImage;
 
@@ -41,6 +44,7 @@ public class JControl extends Box
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
+
 	private void geometry()
 		{
 		this.jButtonKill = new JButton();
@@ -71,9 +75,23 @@ public class JControl extends Box
 		this.jButtonKill.setEnabled(false);
 		this.jButtonStart.setEnabled(true);
 		this.jButtonStop.setEnabled(false);
+
 		this.jButtonKill.addActionListener(createActionListenerKill());
 		this.jButtonStart.addActionListener(createActionListenerStart());
 		this.jButtonStop.addActionListener(createActionListenerStop());
+
+		DiceVariableService.getInstance().addDiceVariableServiceListener(new DiceVariableServiceListener()
+			{
+
+			@Override
+			public void diceVariableServicePerformed(DiceVariableServiceEvent diceVariableServiceEvent)
+				{
+				if (diceVariableServiceEvent.getLifeCycle() == LifeCycle.NATURAL_END)
+					{
+					inverserEtatButton();
+					}
+				}
+			});
 		}
 
 
@@ -113,7 +131,7 @@ public class JControl extends Box
 			@Override
 			public void actionPerformed(ActionEvent e)
 				{
-				inverserEtatButton();
+				//inverserEtatButton();
 				DiceVariableService.getInstance().stop();
 				}
 			};

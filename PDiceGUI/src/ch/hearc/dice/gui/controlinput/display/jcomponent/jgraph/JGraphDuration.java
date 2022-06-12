@@ -39,6 +39,11 @@ public class JGraphDuration extends ChartPanel
 		this.dataset.addValue(chrono.getTimeMS(), CHRONO, Integer.toString(nbFace));
 		}
 
+	public void resetData()
+		{
+		this.dataset.clear();
+		}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/

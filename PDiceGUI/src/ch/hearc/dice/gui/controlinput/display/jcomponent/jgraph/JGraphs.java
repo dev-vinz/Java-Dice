@@ -69,6 +69,7 @@ public class JGraphs extends JPanel
 				{
 				if (diceVariableServiceEvent.getLifeCycle() == LifeCycle.CREATED_STARTED)
 					{
+					effacerGraphs();
 					lancerGraphs();
 					}
 				}
@@ -79,6 +80,12 @@ public class JGraphs extends JPanel
 	private void appearance()
 		{
 		//rien
+		}
+
+	private void effacerGraphs()
+		{
+		this.graphLancerMoyen.resetData();
+		this.graphDuration.resetData();
 		}
 
 	private void lancerGraphs()

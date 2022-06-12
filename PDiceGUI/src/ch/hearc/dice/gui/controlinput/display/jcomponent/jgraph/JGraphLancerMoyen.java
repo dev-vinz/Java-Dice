@@ -37,6 +37,11 @@ public class JGraphLancerMoyen extends ChartPanel
 		this.dataset.addValue(lancerMoyen, LANCER_MOYEN, Integer.toString(nbFace));
 		}
 
+	public void resetData()
+		{
+		this.dataset.clear();
+		}
+
 	/*------------------------------*\
 	|*				Get				*|
 	\*------------------------------*/
