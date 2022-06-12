@@ -7,6 +7,10 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import ch.hearc.dice.gui.service.DiceVariableService;
+import ch.hearc.dice.gui.service.DiceVariableServiceEvent;
+import ch.hearc.dice.gui.service.DiceVariableServiceListener;
+import ch.hearc.dice.gui.service.LifeCycle;
 import ch.hearc.dice.moo.specification.DiceVariable_I;
 import ch.hearc.tools.Chrono;
 import ch.hearc.tools.Utils;
@@ -21,13 +25,8 @@ public class JGraphs extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JGraphs(DiceVariable_I diceVariable)
+	public JGraphs()
 		{
-		// Inputs
-			{
-			this.diceVariable = diceVariable;
-			}
-
 		// Tools
 			{
 			this.gridLayout = new GridLayout(-1, 1);
@@ -63,7 +62,38 @@ public class JGraphs extends JPanel
 
 	private void control()
 		{
-		diceVariable.addIterationListener(new IterationListener()
+		DiceVariableService.getInstance().addDiceVariableServiceListener(new DiceVariableServiceListener()
+			{
+
+			@Override
+			public void diceVariableServicePerformed(DiceVariableServiceEvent diceVariableServiceEvent)
+				{
+				if (diceVariableServiceEvent.getLifeCycle() == LifeCycle.CREATED_STARTED)
+					{
+					lancerGraphs();
+					}
+				}
+
+			});
+		}
+
+	private void appearance()
+		{
+		setBackground(Color.GREEN);
+
+		this.gridLayout.setVgap(10);
+		}
+
+	private void lancerGraphs()
+		{
+		// On enleve les anciens listener sur l’ancien diceVariable
+		if (iterationListener != null)
+			{
+			diceVariable.removeIterationListener(iterationListener);
+			}
+
+		// on s’abonne au nouveau DiceVariable
+		this.iterationListener = new IterationListener()
 			{
 
 			@Override
@@ -71,6 +101,8 @@ public class JGraphs extends JPanel
 				{
 				if (iterationEvent.getEtatAlgo() == EtatAlgo.RUNNING)
 					{
+					DiceVariable_I diceVariable = DiceVariableService.getInstance().getCurrentDiceVariable();
+
 					Map<Integer, Integer> lancers = diceVariable.getMapFaceLancer();
 					Map<Integer, Chrono> chronos = diceVariable.getMapFaceChrono();
 
@@ -81,28 +113,21 @@ public class JGraphs extends JPanel
 					graphDuration.addData(lastChrono.getKey(), lastChrono.getValue());
 					}
 				}
-			});
+			};
 
-		new Thread(diceVariable).start();
-		}
-
-	private void appearance()
-		{
-		setBackground(Color.GREEN);
-
-		this.gridLayout.setVgap(10);
+		this.diceVariable = DiceVariableService.getInstance().getCurrentDiceVariable();
+		this.diceVariable.addIterationListener(iterationListener);
 		}
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
-	private DiceVariable_I diceVariable;
-
 	// Tools
 	private GridLayout gridLayout;
 	private JGraphLancerMoyen graphLancerMoyen;
 	private JGraphDuration graphDuration;
 
+	private IterationListener iterationListener;
+	private DiceVariable_I diceVariable;
 	}

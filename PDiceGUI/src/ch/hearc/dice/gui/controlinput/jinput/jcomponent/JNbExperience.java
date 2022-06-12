@@ -11,7 +11,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import ch.hearc.c_gui.tools.Sizes;
+import ch.hearc.dice.gui.controlinput.jinput.JInput;
 import ch.hearc.dice.gui.utils.Settings;
+import ch.hearc.dice.moo.implementation.DiceVariableInput;
 
 public class JNbExperience extends JPanel
 	{
@@ -20,8 +22,13 @@ public class JNbExperience extends JPanel
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JNbExperience()
+	public JNbExperience(JInput jInput)
 		{
+		// Inputs
+			{
+			this.jInput = jInput;
+			}
+
 		geometry();
 		control();
 		appearance();
@@ -31,56 +38,61 @@ public class JNbExperience extends JPanel
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
 
-	/*------------------------------*\
-	|*				Get				*|
-	\*------------------------------*/
-
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
 
 	private void geometry()
 		{
-		this.jSlider = new JSlider();
+		this.jSlider = new JSlider(1, DiceVariableInput.NB_EXPERIENCE);
+		this.jSlider.setValue(DiceVariableInput.NB_EXPERIENCE);
+
 		this.jLabel = new JLabel();
-		this.gridLayout = new GridLayout(2,1);
+		this.gridLayout = new GridLayout(2, 1);
+
 		setLayout(gridLayout);
 		add(this.jLabel);
 		add(this.jSlider);
-
 		}
 
 	private void control()
 		{
 		this.jLabel.setText(Integer.toString(jSlider.getValue()));
+
 		jSlider.addChangeListener(new ChangeListener()
 			{
+
 			@Override
 			public void stateChanged(ChangeEvent e)
 				{
-				jLabel.setText(Integer.toString(jSlider.getValue()));
+				int nbExperience = jSlider.getValue();
+				onChanged(nbExperience);
 				}
 			});
-
 		}
-
-
-
 
 	private void appearance()
 		{
 		setBorder(BorderFactory.createTitledBorder("Number of experiment"));
 		Sizes.setHorizontal(jSlider, Settings.BUTTON_WIDTH);
+		}
 
+	private void onChanged(int nbExperience)
+		{
+		this.jLabel.setText(Integer.toString(nbExperience));
+		this.jInput.setNbExperience(nbExperience);
 		}
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	//Tools
+	// Inputs
+	private JInput jInput;
+
+	// Tools
 	private JSlider jSlider;
 	private JLabel jLabel;
 	private GridLayout gridLayout;
-	}
 
+	}

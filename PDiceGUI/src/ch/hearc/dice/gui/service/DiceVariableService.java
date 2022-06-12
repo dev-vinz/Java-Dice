@@ -1,6 +1,7 @@
 
 package ch.hearc.dice.gui.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,6 +17,29 @@ import ch.hearc.tools.algo.IterationListener;
 public class DiceVariableService
 	{
 
+	/*------------------------------------------------------------------*\
+	|*							Constructeurs							*|
+	\*------------------------------------------------------------------*/
+
+	private DiceVariableService()
+		{
+		// Tools
+			{
+			this.listDiceVariableServiceListener = new ArrayList<>();
+			this.isStarted = new AtomicBoolean(false);
+			this.diceVariableInput = new DiceVariableInput();
+			this.currentDiceVariable = FactoryDiceVariable.create(diceVariableInput);
+			}
+		}
+
+	/*------------------------------------------------------------------*\
+	|*							Methodes Public							*|
+	\*------------------------------------------------------------------*/
+
+	/*------------------------------*\
+	|*				Get				*|
+	\*------------------------------*/
+
 	public static synchronized DiceVariableService getInstance()
 		{
 		if (instance == null)
@@ -26,9 +50,9 @@ public class DiceVariableService
 		return instance;
 		}
 
-	public DiceVariable_I getCurentDiceVariable()
+	public DiceVariable_I getCurrentDiceVariable()
 		{
-		return curentDiceVariable;
+		return currentDiceVariable;
 		}
 
 	/**
@@ -46,45 +70,54 @@ public class DiceVariableService
 	public synchronized DiceVariable_I start() // called by buttonStart
 		{
 		Assertions.assertTrue(diceVariableInput != null);
+
 		if (!isStarted.get())
 			{
-			this.curentDiceVariable = FactoryDiceVariable.create(diceVariableInput);
-			this.thread = new Thread(this.curentDiceVariable);
+			this.currentDiceVariable = FactoryDiceVariable.create(diceVariableInput);
+			this.thread = new Thread(this.currentDiceVariable);
 			thread.start();
 
-			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.CREATED_STARTED);
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.CREATED_STARTED);
 			avertirDiceVariableListener(event);
 
-			this.curentDiceVariable.addIterationListener(new IterationListener()
+			this.currentDiceVariable.addIterationListener(new IterationListener()
 				{
 
 				@Override
 				public void iterationPerformed(IterationEvent iterationEvent)
 					{
-					if(iterationEvent.getEtatAlgo()==EtatAlgo.END)
+					if (iterationEvent.getEtatAlgo() == EtatAlgo.END)
 						{
 						isStarted.set(false);
 						}
 					}
 				});
 
-			return this.curentDiceVariable;
+			return this.currentDiceVariable;
 			}
-		// TODO else // message d’erreur
+		else
+			{
+			System.out.println("[ERROR] DiceVariableService : Dice already started");
 
-		return curentDiceVariable;
+			return null;
+			}
 		}
 
 	public synchronized void stop() // called by buttonStop
 		{
 		if (isStarted.get())
 			{
-			this.curentDiceVariable.stop();
-			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.STOPPED);
+			this.currentDiceVariable.stop();
+
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.STOPPED);
 			avertirDiceVariableListener(event);
+
 			this.isStarted.set(false);
 			}
-		// TODO else // message d’erreur
+		else
+			{
+			System.out.println("[ERORR] DiceVariableService : Dice already stopped");
+			}
 		}
 
 	public synchronized void kill() // called by buttonKill
@@ -92,17 +125,22 @@ public class DiceVariableService
 		if (isStarted.get())
 			{
 			this.thread.stop();
-			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, curentDiceVariable, diceVariableInput, LifeCycle.KILLED);
+
+			DiceVariableServiceEvent event = new DiceVariableServiceEvent(instance, currentDiceVariable, diceVariableInput, LifeCycle.KILLED);
 			avertirDiceVariableListener(event);
 
 			this.isStarted.set(false);
 			}
-		// TODO else // message d’erreur
+		else
+			{
+			System.out.println("[ERROR] DiceVariableService : Dice already killed");
+			}
 		}
 
 	/*------------------------------------------------------------------*\
 	|* 							listener								*|
 	\*------------------------------------------------------------------*/
+
 	public synchronized void addDiceVariableServiceListener(DiceVariableServiceListener diceVariableServiceListener)
 		{
 		this.listDiceVariableServiceListener.add(diceVariableServiceListener);
@@ -124,11 +162,13 @@ public class DiceVariableService
 	/*------------------------------------------------------------------*\
 	|* 							Attributs 								*|
 	\*------------------------------------------------------------------*/
+
 	// Tools
-	private DiceVariable_I curentDiceVariable;
+	private DiceVariable_I currentDiceVariable;
 	private List<DiceVariableServiceListener> listDiceVariableServiceListener;
 	private AtomicBoolean isStarted;
 	private Thread thread;
+
 	// Inputs
 	private DiceVariableInput diceVariableInput;
 

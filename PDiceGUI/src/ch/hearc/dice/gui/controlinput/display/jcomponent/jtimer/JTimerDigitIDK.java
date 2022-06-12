@@ -1,5 +1,5 @@
 
-package ch.hearc.dice.gui.controlinput.display.jcomponent;
+package ch.hearc.dice.gui.controlinput.display.jcomponent.jtimer;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -10,14 +10,14 @@ import javax.swing.JPanel;
 
 import ch.hearc.tools.Chrono;
 
-public class JChronometre extends JPanel
+public class JTimerDigitIDK extends JPanel
 	{
 
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JChronometre()
+	public JTimerDigitIDK()
 		{
 		geometry();
 		control();

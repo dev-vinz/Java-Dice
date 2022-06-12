@@ -1,6 +1,9 @@
 
 package ch.hearc.dice.gui.controlinput.jinput.jcomponent;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -8,7 +11,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
 import ch.hearc.c_gui.tools.Sizes;
+import ch.hearc.dice.gui.controlinput.jinput.JInput;
 import ch.hearc.dice.gui.utils.Settings;
+import ch.hearc.dice.moo.implementation.TypeProcessing;
 
 public class JTypeProcess extends Box
 	{
@@ -17,9 +22,14 @@ public class JTypeProcess extends Box
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-	public JTypeProcess()
+	public JTypeProcess(JInput jInput)
 		{
 		super(BoxLayout.Y_AXIS);
+
+		// Inputs
+			{
+			this.jInput = jInput;
+			}
 
 		geometry();
 		control();
@@ -43,6 +53,7 @@ public class JTypeProcess extends Box
 		this.jRadioSequentialButton = new JRadioButton("Sequentiel");
 		this.jRadioRunnableButton = new JRadioButton("Runnable");
 		this.jRadioParallelButton = new JRadioButton("Parallel");
+		this.jRadioParallelButton.setSelected(true);
 
 		this.radioButtonGroup = new ButtonGroup();
 		radioButtonGroup.add(jRadioSequentialButton);
@@ -60,8 +71,9 @@ public class JTypeProcess extends Box
 
 	private void control()
 		{
-		// TODO Auto-generated method stub
-
+		this.jRadioParallelButton.addActionListener(createActionListener(TypeProcessing.PARALLEL));
+		this.jRadioRunnableButton.addActionListener(createActionListener(TypeProcessing.RUNNABLE));
+		this.jRadioSequentialButton.addActionListener(createActionListener(TypeProcessing.SEQUENTIEL));
 		}
 
 	private void appearance()
@@ -72,9 +84,29 @@ public class JTypeProcess extends Box
 		Sizes.setHorizontal(jRadioParallelButton, Settings.BUTTON_WIDTH);
 		}
 
+	/*------------------------------*\
+	|*			  Static			*|
+	\*------------------------------*/
+
+	private ActionListener createActionListener(TypeProcessing process)
+		{
+		return new ActionListener()
+			{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+				{
+				JTypeProcess.this.jInput.setTypeProcess(process);
+				}
+			};
+		}
+
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
+
+	//Inputs
+	private JInput jInput;
 
 	//Tools
 	private ButtonGroup radioButtonGroup;

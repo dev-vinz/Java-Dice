@@ -30,4 +30,16 @@ public class Utils
 
 		return lastEntry;
 		}
+
+	public static String toTwoDigitsString(int nb)
+		{
+		if (nb < 10)
+			{
+			return "0" + nb;
+			}
+		else
+			{
+			return Integer.toString(nb);
+			}
+		}
 	}

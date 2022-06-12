@@ -1,10 +1,10 @@
 
-package ch.hearc.dice.gui.controlinput.display.jcomponent.jgraph;
+package ch.hearc.dice.gui.controlinput.display;
 
 import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
 import ch.hearc.dice.gui.service.DiceVariableService;
 
-public class UseJGraph
+public class UseJDisplay
 	{
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
@@ -17,7 +17,7 @@ public class UseJGraph
 
 	public static void main()
 		{
-		new JFrameBaseLine(new JGraphs());
+		new JFrameBaseLine(new JDisplay());
 		DiceVariableService.getInstance().start();
 		}
 

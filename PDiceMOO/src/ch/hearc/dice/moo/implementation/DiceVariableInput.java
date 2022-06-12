@@ -17,6 +17,11 @@ public class DiceVariableInput
 		this.typeProcessing = typeProcessing;
 		}
 
+	public DiceVariableInput()
+		{
+		this(new Intervale(NB_FACE_MIN, NB_FACE_MAX + 1), NB_EXPERIENCE, TYPE_PROCESSING);
+		}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|
 	\*------------------------------------------------------------------*/
@@ -40,6 +45,25 @@ public class DiceVariableInput
 		return this.typeProcessing;
 		}
 
+	/*------------------------------*\
+	|*				Set				*|
+	\*------------------------------*/
+
+	public void setIntervalNbFace(Intervale intervalNbFace)
+		{
+		this.intervalNbFace = intervalNbFace;
+		}
+
+	public void setNbExperience(int nbExperience)
+		{
+		this.nbExperience = nbExperience;
+		}
+
+	public void setTypeProcessing(TypeProcessing typeProcessing)
+		{
+		this.typeProcessing = typeProcessing;
+		}
+
 	/*------------------------------------------------------------------*\
 	|*							Methodes Private						*|
 	\*------------------------------------------------------------------*/
@@ -58,7 +82,7 @@ public class DiceVariableInput
 	\*------------------------------*/
 
 	public static final int NB_FACE_MIN = 6;
-	public static final int NB_FACE_MAX = 36;
+	public static final int NB_FACE_MAX = 200;
 	public static final int NB_EXPERIENCE = Integer.MAX_VALUE / 100;
 	public static final TypeProcessing TYPE_PROCESSING = TypeProcessing.PARALLEL;
 	}
