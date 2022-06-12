@@ -22,7 +22,6 @@ public class JDisplay extends Box
 
 		// Tools
 			{
-			//this.jTimer = new JTimer();
 			this.jProgressBars = new JProgressBars();
 			this.jGraphs = new JGraphs();
 			}
@@ -47,7 +46,6 @@ public class JDisplay extends Box
 	private void geometry()
 		{
 		add(Box.createVerticalStrut(Settings.MARGE));
-		//add(new JCenterH(this.jTimer));
 		add(new JCenterH(this.jGraphs));
 		add(new JCenterH(this.jProgressBars));
 		add(Box.createVerticalStrut(Settings.MARGE));
@@ -67,10 +65,7 @@ public class JDisplay extends Box
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
-
 	// Tools
-	//private JTimer jTimer;
 	private JProgressBars jProgressBars;
 	private JGraphs jGraphs;
 

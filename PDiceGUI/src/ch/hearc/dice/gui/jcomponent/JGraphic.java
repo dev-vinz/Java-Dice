@@ -3,7 +3,7 @@ package ch.hearc.dice.gui.jcomponent;
 
 import javax.swing.JSplitPane;
 
-import ch.hearc.dice.gui.controlinput.JControlInput;
+import ch.hearc.dice.gui.controlinput.JRightComponent;
 import ch.hearc.dice.gui.controlinput.display.JDisplay;
 
 public class JGraphic extends JSplitPane
@@ -16,6 +16,12 @@ public class JGraphic extends JSplitPane
 	public JGraphic()
 		{
 		super(JSplitPane.HORIZONTAL_SPLIT);
+
+		//tools
+			{
+			this.jdisplay = new JDisplay();
+			this.jControlInput = new JRightComponent();
+			}
 
 		geometry();
 		control();
@@ -36,9 +42,6 @@ public class JGraphic extends JSplitPane
 
 	private void geometry()
 		{
-		this.jdisplay = new JDisplay();
-		this.jControlInput = new JControlInput();
-
 		setLeftComponent(this.jdisplay);
 		setRightComponent(this.jControlInput);
 		}
@@ -57,10 +60,8 @@ public class JGraphic extends JSplitPane
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
-
 	// Tools
-	private JControlInput jControlInput;
+	private JRightComponent jControlInput;
 	private JDisplay jdisplay;
 
 	}

@@ -1,6 +1,8 @@
 
 package ch.hearc.dice.gui.controlinput.display.jcomponent.jprogressbar;
 
+import java.awt.Color;
+
 import javax.swing.JProgressBar;
 
 import ch.hearc.dice.gui.service.DiceVariableService;
@@ -80,7 +82,10 @@ public class JProgressBarGlobal extends JProgressBar
 		{
 		return new Runnable()
 			{
+			int h = JProgressBarGlobal.this.getWidth();
 
+			float hue01 = 0;
+			float dhue = 1/(100000*(float)h);
 			@Override
 			public void run()
 				{
@@ -88,10 +93,11 @@ public class JProgressBarGlobal extends JProgressBar
 					{
 					int value = JProgressBarGlobal.this.getValue();
 
+
 					if (isAscending)
 						{
 						value++;
-
+						hue01 += dhue;
 						if (value >= MAX_VALUE)
 							{
 							isAscending = false;
@@ -100,19 +106,22 @@ public class JProgressBarGlobal extends JProgressBar
 					else
 						{
 						value--;
-
+						hue01 -= dhue;
 						if (value <= 0)
 							{
 							isAscending = true;
 							}
 						}
-
+					int colorInt = Color.HSBtoRGB(hue01, 1, 1);
+					Color myColor = new Color(colorInt);
 					JProgressBarGlobal.this.setValue(value);
 					JProgressBarGlobal.this.repaint();
+					JProgressBarGlobal.this.setForeground(myColor);
 					}
 				}
 			};
 		}
+
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|

@@ -11,16 +11,17 @@ import ch.hearc.c_gui.tools.decorateur.JFrameBaseLine;
 public class JFrameDiceBaseLine extends JFrameBaseLine
 	{
 
-	public JFrameDiceBaseLine(JComponent jcomponent, ImageIcon imageIcon, Dimension minDimension, Dimension prefDimension)
-		{
-		super(jcomponent, imageIcon);
-		this.setMinimumSize(minDimension);
-		this.setMinimumSize(prefDimension);
-		}
-
 	/*------------------------------------------------------------------*\
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
+
+	public JFrameDiceBaseLine(JComponent jcomponent, ImageIcon imageIcon, Dimension prefDimension)
+		{
+		super(jcomponent, imageIcon);
+		this.setMinimumSize(new Dimension (800,800));
+		this.setMinimumSize(prefDimension);
+		this.setBounds(20, 20, prefDimension.width, prefDimension.height);
+		}
 
 	/*------------------------------------------------------------------*\
 	|*							Methodes Public							*|

@@ -59,14 +59,14 @@ public class JDice extends JTabbedPane
 
 	private void control()
 		{
-		// TODO Auto-generated method stub
-
+		// rien
 		}
 
 	private void appearance()
 		{
-
+		// rien
 		}
+
 
 	/*------------------------------------------------------------------*\
 	|*							Attributs Private						*|
@@ -75,8 +75,8 @@ public class JDice extends JTabbedPane
 	// Outputs
 
 	//tools
-	private JAbout jAbout;
-	private JGraphic jGraphic;
+		private JAbout jAbout;
+		private JGraphic jGraphic;
 
 	/*------------------------------*\
 	|*			  Static			*|

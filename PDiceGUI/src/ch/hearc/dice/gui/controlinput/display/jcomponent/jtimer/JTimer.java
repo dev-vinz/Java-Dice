@@ -203,8 +203,6 @@ public class JTimer extends JPanel
 	|*							Attributs Private						*|
 	\*------------------------------------------------------------------*/
 
-	// Inputs
-
 	// Tools
 	private int hours;
 	private int minutes;

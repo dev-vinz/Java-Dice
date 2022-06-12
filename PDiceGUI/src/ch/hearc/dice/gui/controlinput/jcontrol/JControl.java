@@ -22,11 +22,16 @@ public class JControl extends Box
 	|*							Constructeurs							*|
 	\*------------------------------------------------------------------*/
 
-
 	public JControl()
 		{
-
 		super(BoxLayout.X_AXIS);
+
+		//tools
+			{
+			this.jButtonKill = new JButton();
+			this.jButtonStart = new JButton();
+			this.jButtonStop = new JButton();
+			}
 
 		geometry();
 		control();
@@ -47,17 +52,6 @@ public class JControl extends Box
 
 	private void geometry()
 		{
-		this.jButtonKill = new JButton();
-		this.jButtonStart = new JButton();
-		this.jButtonStop = new JButton();
-		//this.jButtonKill = new JButtonKill();
-		//this.jButtonStart = new JButtonStart();
-		//this.jButtonStop = new JButtonStop();
-
-//		add(jButtonKill);
-//		add(jButtonStart);
-//		add(jButtonStop);
-
 		add(Box.createHorizontalGlue());
 		add(this.jButtonStart);
 		add(Box.createHorizontalGlue());
@@ -93,7 +87,6 @@ public class JControl extends Box
 				}
 			});
 		}
-
 
 	private ActionListener createActionListenerKill()
 		{
@@ -160,22 +153,4 @@ public class JControl extends Box
 	private JButton jButtonStart;
 	private JButton jButtonStop;
 
-
-
-	//private JButtonKill jButtonKill;
-	//private JButtonStart jButtonStart;
-	//private JButtonStop jButtonStop;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
