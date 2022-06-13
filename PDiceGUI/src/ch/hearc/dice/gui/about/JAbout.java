@@ -49,7 +49,6 @@ public class JAbout extends JPanel
 
 		add(new JCenter(this.jTextArea), BorderLayout.CENTER);
 		add(this.jLabelImage, BorderLayout.SOUTH);
-
 		}
 
 	private void control()
