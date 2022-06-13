@@ -41,13 +41,13 @@ public class JAbout extends JPanel
 	private void geometry()
 		{
 
-		this.jLabelText = new JTextArea();
+		this.jTextArea = new JTextArea();
 		this.jLabelImage = new JLabel(ShopImage.HEARC);
 
 		this.borderLayout = new BorderLayout();
 		setLayout(borderLayout);
 
-		add(new JCenter(this.jLabelText), BorderLayout.CENTER);
+		add(new JCenter(this.jTextArea), BorderLayout.CENTER);
 		add(this.jLabelImage, BorderLayout.SOUTH);
 
 		}
@@ -61,13 +61,13 @@ public class JAbout extends JPanel
 		{
 		this.jLabelImage.setOpaque(true);
 
-		this.jLabelText.setEditable(false);
-		this.jLabelText.setText("Projet présenté pour M. Bilat\nCours Java II \nPar Alessio Comi \nPar Vincent Jeannin");
-		this.jLabelText.setFont(TEXT_FONT);
-		this.jLabelText.setOpaque(false);
+		this.jTextArea.setEditable(false);
+		this.jTextArea.setText("Projet présenté pour M. Bilat\nCours Java II \nPar Alessio Comi \nPar Vincent Jeannin");
+		this.jTextArea.setFont(TEXT_FONT);
+		this.jTextArea.setOpaque(false);
 
-		Sizes.setHorizontal(jLabelText, 300);
-		Sizes.setVertical(jLabelText, 100);
+		Sizes.setHorizontal(jTextArea, 300);
+		Sizes.setVertical(jTextArea, 100);
 		}
 
 	/*------------------------------------------------------------------*\
@@ -75,7 +75,7 @@ public class JAbout extends JPanel
 	\*------------------------------------------------------------------*/
 
 	// Tools
-	private JTextArea jLabelText;
+	private JTextArea jTextArea;
 	private JLabel jLabelImage;
 
 	private BorderLayout borderLayout;
